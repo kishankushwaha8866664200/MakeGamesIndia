@@ -65,11 +65,15 @@ body{
     .leftDiv h6{
         text-align: center;
     }
+    .leftDiv h1 {
+        text-align: center;
+    }
     .rightDiv{
         justify-content: center;
     }
     .rightDiv img{
         width: 50%;
     }
+
     
 }
