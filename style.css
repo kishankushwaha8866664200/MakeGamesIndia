@@ -1,6 +1,7 @@
 body{
     background-color: #084B60 !important;
     color:white !important;
+    scroll-behavior: smooth;
 
 }
 .navbar{
@@ -9,6 +10,11 @@ body{
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     box-shadow: 3px 2px 5px #c0c0c0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
 }
 .navbar img {
     width: 50px;
@@ -20,7 +26,7 @@ body{
 }
 
 .innerRow{
-    margin-top: 20px !important;
+    margin-top: 97px !important;
     background-color: #167D88;
     border-radius: 20px;
     box-shadow: 3px 2px 5px #c0c0c0;
@@ -54,15 +60,25 @@ body{
     font-weight: 500;
 }
 
-@media only screen and (max-width: 577px) {
+@media only screen and (max-width: 358px) {
+    .navbar-brand{
+        font-size: 15px !important;
+    }
+}
+
+@media only screen and (max-width: 575px) {
     .innerRow{
-        display:flex;
         flex-direction: column-reverse;
+        margin-left: 10px !important;
+        margin-right: 10px !important;
     }
     .leftDiv{
         align-items: center;
     }
     .leftDiv h6{
+        text-align: center;
+    }
+    .leftDiv h3{
         text-align: center;
     }
     .leftDiv h1 {
@@ -73,7 +89,129 @@ body{
     }
     .rightDiv img{
         width: 50%;
-    }
+    }   
+    .courseContainer, .upcomingCourses{
+margin: 0px 10px !important;
+    }    
+}
 
-    
+
+.course, .upCourse{
+    border: 2px #0d424d solid;
+    width: min-content !important;
+    padding: 5px 5px;
+    margin-bottom: 10px;
+    background-color: #167D88 !important;
+
+}
+.btn-course {
+    background-color: #FEC756 !important;
+    color: white !important;
+}
+.course img {
+    border-radius: 3px;
+    margin-bottom: 5px;
+}
+.course:hover img {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.course:hover{
+    background-color: #167D88 !important;
+    box-shadow: 0px 0px 5px #555555;
+    border-radius: 3px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    animation: divBorder 0.5s ease normal;
+}
+
+.course p {
+    text-shadow: 1px 1px 20px #c0c0c0;
+    margin-bottom: 6px;
+}
+.cRating{
+    text-shadow: 1px 1px 20px #FEC756;
+    margin-bottom: 0px !important;
+}
+.coursePrice{
+    color: #fa352e;
+    text-shadow: 0px 0px 0px;
+    margin-bottom: 7px !important;
+}
+.courseDescription{
+    margin-bottom: 3px !important;
+
+}
+
+@keyframes divBorder {
+    from {
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+    }
+    to {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+}
+@keyframes imgBorder {
+    from {
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+    }
+    to {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+}
+.course:hover img {
+    animation: imgBorder 0.5s ease-in normal;
+}
+.courseContainer, .upcomingCourses{
+    background-color: #167D88;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 3px 2px 5px #c0c0c0;
+}
+
+.divRectangle{
+    border-radius: 30px;
+    padding: 10px 20px;
+    background-color: #FEC756;
+    width: max-content;
+    position: relative;
+    left: 2px;
+}
+.courseText{
+    left:6% !important;
+    position:relative;
+    width: max-content;
+}
+.upCourseDivRectangle{
+    background-color: #fa352e;
+    border-radius: 30px;
+    padding: 10px 20px;
+    width: max-content;
+    position: relative;
+    left: 2px;
+}
+.outerUpCourseDiv{
+    margin-bottom: 30px;
+}
+#about{
+    height: 50vh;
+    background-color: #645d5d;
+}
+.learn{
+    color:#ffbb32;
+}
+.earn{
+    color:#ff2018;
+    font-weight: 500;
+}
+
+.comma{
+    color:#FEC756
+}
+.courseRow{
+    justify-content: space-around;
 }

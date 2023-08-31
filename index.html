@@ -6,13 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Make Games India</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/01059fb7a0.js" crossorigin="anonymous"></script>
      <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="bootstrap/bootstrap-icons.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
-            <img src="media/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+            <img src="media/logo.png" alt="Logo" class="d-inline-block">
             Make Games India
             </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,7 +26,10 @@
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="#outerCourseDiv">Courses</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#outerUpCourseDiv">Upcoming Courses</a>
               </li>
           </div>
         </div>
@@ -35,15 +40,109 @@
           <div class="leftDiv col-lg-7 col-md-7 col-sm-7 col-xs-7">
               <h1 class="headingText text-capitalize display-5">Make Your Own 
                   <br><span class="coding">Coding</span> World</h1>
+              <h3 class="display-6">Learn Today<span class="comma">,</span><br><span class="earn">Earn</span> Tomorrow</h3>
               <h6>Master the art of Your Topic with our comprehensive courses.</h5>
-              <button class="btn btn-outline-light">Enroll Course</button>
+              <a href="#outerCourseDiv"><button class="btn btn-outline-light">View Courses</button></a>
           </div>
           <div class="rightDiv col-lg-5 col-md-5 col-sm-5 col-xs-5">
               <img src="media/headImg.png" alt="">
           </div>
+        </div>
       </div>
-        
+<br>
+      <div class="outerCourseDiv" id="outerCourseDiv">
+        <h2 class="courseText">
+          Courses
+          <div class="divRectangle"></div>
+        </h2>
+        <div class="container courseContainer">
+          <div class="row courseRow">
+            <div class="course" id="course1">
+              <div>
+                <img src="media/mgi_course1.jpg" alt="mgi_course1">
+              </div>
+              <div>
+                <div class="container center">
+                  <h4>Video Game Programming</h3>
+                  <p class="courseDescription">You get total 8 videos with only 2hrs of course with study materials</p>
+                  <p>Rating : 
+                <span class="cRating"><i class="fa-solid fa-star" style="color: #fec756;"></i>
+                    <i class="fa-solid fa-star" style="color: #fec756;"></i>
+                    <i class="fa-solid fa-star" style="color: #fec756;"></i>
+                    <i class="fa-solid fa-star" style="color: #fec756;"></i>
+                    <i class="fa-solid fa-star" style="color: #fec756;"></i></span>
+                  </p>
+                  <h4 class="coursePrice">₹49</h6>
+                  <button class="btn btn-course">Buy Now</button>
+                </div>
+              </div>
+          </div>
+          <div class="course" id="course2">
+              <div>
+                <img src="media/mgi_course2.jpg" alt="mgi_course1">
+              </div>
+              <div>
+                <div class="container center">
+                  <h4>Wheel Spin Game Coding</h3>
+                  <p class="courseDescription">Learn how to create wheel spin game in one video, also get full coding with study materials.</p>
+                  <p>Rating : 
+                <span class="cRating"><i class="fa-solid fa-star" style="color: #fec756;"></i>
+                    <i class="fa-solid fa-star" style="color: #fec756;"></i>
+                    <i class="fa-solid fa-star" style="color: #fec756;"></i>
+                    <i class="fa-solid fa-star" style="color: #fec756;"></i>
+                    <i class="fa-solid fa-star" style="color: #fec756;"></i></span>
+                  </p>
+                  <h4 class="coursePrice">$20</h6>
+                  <button class="btn btn-course">Buy Now</button>
+                </div>
+              </div>
+          </div>
+          </div>
+        </div>
       </div>
+      <br>
+      <div class="outerUpCourseDiv" id="outerUpCourseDiv">
+        <h2 class="courseText">
+          Upcoming Courses
+          <div class="upCourseDivRectangle"></div>
+        </h2>
+        <div class="upcomingCourses container-fluid container-sm">
+          <div class="row courseRow">
+            <div class="upCourse" id="upCourse1">
+              <div>
+                <img src="media/mgi_course3.jpg" alt="mgi_course1">
+              </div>
+              <div>
+                <div class="container center">
+                  <h4>Ultimate Moto Race</h3>
+                  <p class="courseDescription">Learn how to create Bike/Moto Racing game in one video, also get full coding with study materials.</p>
+                  <p>Rating : 
+                <span class="cRating"><i class="fa-solid fa-star" style="color: #fec756;"></i>
+                    <i class="fa-solid fa-star" style="color: #fec756;"></i>
+                    <i class="fa-solid fa-star" style="color: #fec756;"></i>
+                    <i class="fa-solid fa-star" style="color: #fec756;"></i>
+                    <i class="fa-solid fa-star" style="color: #fec756;"></i></span>
+                  </p>
+                  <h4 class="coursePrice">$20</h6>
+                  <button class="btn btn-danger">Buy Now</button>
+                  <button class="btn btn-danger">Remind Later</button>
+                </div>
+              </div>
+             </div>
+          </div>
+        </div>
+      </div>
+
+
+      <section id="about">
+        <div class="container">
+
+        </div>
+      </section>
+
+
+
+      
       <script src="bootstrap/bootstrap.bundle.min.js"></script>
 </body>
 </html>
