@@ -5,14 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Make Games India</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css"rel="stylesheet"/>
     <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
     <link rel="shortcut icon" href="media/logo.png" type="image/x-icon">
     <script src="https://kit.fontawesome.com/01059fb7a0.js" crossorigin="anonymous"></script>
      <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
-     <link rel="stylesheet" href="bootstrap/bootstrap-icons.css">
 </head>
 <body>
-    <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
+    <nav id="navbar" class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
             <img src="media/logo.png" alt="Logo" class="d-inline-block">
@@ -30,8 +33,13 @@
                 <a class="nav-link" href="#outerCourseDiv">Courses</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#outerUpCourseDiv">Upcoming Courses</a>
+                <a class="nav-link" href="#">Purchased Course</a>
               </li>
+            </ul>
+            <div class="d-flex">
+              <button class="btn btn-warning mx-2" data-bs-target="#modalSignUp" data-bs-toggle="modal">SignUp</button>
+              <button class="btn btn-outline-primary">Login</button>
+            </div>
           </div>
         </div>
       </nav>
@@ -107,7 +115,10 @@
           Upcoming Courses
           <div class="upCourseDivRectangle"></div>
         </h2>
-        <div class="upcomingCourses container-fluid container-sm">
+        <div class="upcomingCourses container-fluid container-sm" data-mdb-toggle="animation"
+        data-mdb-animation-reset="true"
+        data-mdb-animation-start="onScroll"
+        data-mdb-animation="slide-out-right">
           <div class="row courseRow">
             <div class="upCourse" id="upCourse1">
               <div>
@@ -134,16 +145,129 @@
         </div>
       </div>
 
-
       <section id="about">
         <div class="container">
 
         </div>
       </section>
-
-
-
+      <!--MODALS-->
+      <div class="modal fade" tabindex="-1" role="dialog" id="modalSignUp">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content rounded-4 shadow">
+            <div class="modal-header p-5 pb-4 border-bottom-0">
+              <h1 class="fw-bold mb-0 fs-2 text-secondary-emphasis">Sign up for free</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
       
-      <script src="bootstrap/bootstrap.bundle.min.js"></script>
+            <div class="modal-body p-5 pt-0">
+              <form class="">
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control rounded-3 text-secondary-emphasis" id="emailInput" placeholder="name@example.com">
+                  <label for="floatingInput" class="text-secondary-emphasis">Email address</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="password" class="form-control rounded-3 text-secondary-emphasis" id="passwordInput" placeholder="Password">
+                  <label for="floatingPassword" class="text-secondary-emphasis">Password</label>
+                </div>
+                <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" id="signUpBtn" onclick="signUp()" type="button">Sign up</button>
+                <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
+                <hr class="my-4 text-secondary-emphasis">
+                <h2 class="fs-5 fw-bold mb-3">Or use a third-party</h2>
+                <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" id="googleSignInButton"type="button">
+                  <svg class="bi me-1" width="16" height="16"><use xlink:href="#twitter"/></svg>
+                  Sign up with Google
+                </button>
+                <button class="w-100 py-2 mb-2 btn btn-outline-primary rounded-3">
+                  <svg class="bi me-1" width="16" height="16"><use xlink:href="#facebook"/></svg>
+                  Sign up with Facebook
+                </button>
+                <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3">
+                  <svg class="bi me-1" width="16" height="16"><use xlink:href="#github"/></svg>
+                  Sign up with GitHub
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <script>
+      const firebaseConfig = {
+  apiKey: "AIzaSyBLs38kDc-yUygUwnsHe02sOJdwJtJkjZ8",
+  authDomain: "makegamesindia-88ebb.firebaseapp.com",
+  databaseURL: "https://makegamesindia-88ebb-default-rtdb.firebaseio.com",
+  projectId: "makegamesindia-88ebb",
+  storageBucket: "makegamesindia-88ebb.appspot.com",
+  messagingSenderId: "1039005721516",
+  appId: "1:1039005721516:web:644b489ea1eb10df875009",
+  measurementId: "G-PLJSNQ64TJ"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+// Now you can use Firebase services like Firestore, Authentication, etc.
+const db = firebase.database();
+
+var signUpBtn = document.getElementById("signUpBtn");
+
+var emailIn = document.getElementById("emailInput");
+var passwordIn = document.getElementById("passwordInput");
+
+
+function signUp() {
+  console.log(emailIn.value, passwordIn.value);
+  firebase.auth().createUserWithEmailAndPassword(emailIn.value, passwordIn.value)
+  .then((userCredential) => {
+    // Signed in 
+    var user = userCredential.user;
+    console.log(user);
+    
+    db.ref("users/"+user.uid).set({
+    email:emailIn.value,
+    courses:{
+    course1:false,
+    course2:false,
+    course3:false
+    }
+});
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.log(errorCode, errorMessage);
+    // ..
+  });
+}
+
+function signIn() {
+  console.log(emailIn.value, passwordIn.value);
+  firebase.auth().signInWithEmailAndPassword(emailIn.value, passwordIn.value)
+  .then((userCredential) => {
+    // Signed in 
+    var user = userCredential.user;
+    console.log(user);
+    
+    const dbRef = firebase.database().ref();
+dbRef.child("users").child(user.uid).get().then((snapshot) => {
+  if (snapshot.exists()) {
+    console.log(snapshot.val());
+  } else {
+    console.log("No data available");
+  }
+}).catch((error) => {
+  console.error(error);
+});
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.log(errorCode, errorMessage);
+    // ..
+  });
+}
+/*  */
+    </script>
+    <script src="main.js"></script>
+    <script src="bootstrap/bootstrap.bundle.min.js"></script>
 </body>
 </html>

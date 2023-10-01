@@ -215,3 +215,37 @@ margin: 0px 10px !important;
 .courseRow{
     justify-content: space-around;
 }
+ 
+#navbar.scrolled {
+    top: 12px;
+    animation: ease 0.5s transition;
+    border-radius: 20px;
+}
+#navbar.notScrolled{
+    top:0px;
+    animation: ease 0.5s revTransition;
+}
+@keyframes transition {
+    from{
+        top:0;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+    }
+    to{
+        top:12px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+}
+@keyframes revTransition {
+    from{
+        top:12px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+    to{
+        top:0;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+    }
+}

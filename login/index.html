@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+</head>
+<body>
+    <button id="googleSignInButton">Sign in with Google</button>
+
+    <script>
+        const firebaseConfig = {
+  apiKey: "AIzaSyBLs38kDc-yUygUwnsHe02sOJdwJtJkjZ8",
+  authDomain: "makegamesindia-88ebb.firebaseapp.com",
+  databaseURL: "https://makegamesindia-88ebb-default-rtdb.firebaseio.com",
+  projectId: "makegamesindia-88ebb",
+  storageBucket: "makegamesindia-88ebb.appspot.com",
+  messagingSenderId: "1039005721516",
+  appId: "1:1039005721516:web:644b489ea1eb10df875009",
+  measurementId: "G-PLJSNQ64TJ"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+// Now you can use Firebase services like Firestore, Authentication, etc.
+const auth = firebase.auth();
+
+        const googleSignInButton = document.getElementById('googleSignInButton');
+        
+        googleSignInButton.addEventListener('click', () => {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            
+            firebase.auth().signInWithPopup(provider)
+                .then((result) => {
+                    const user = result.user;
+                    console.log('Logged in user:', user);
+                })
+                .catch((error) => {
+                    console.error('Google Sign-In Popup Error:', error);
+                });
+        });
+    </script>
+</body>
+</html>
